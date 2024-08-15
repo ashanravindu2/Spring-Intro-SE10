@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/blog")
+@CrossOrigin
 
 public class BlogController {
 
@@ -48,5 +49,27 @@ public class BlogController {
     @GetMapping("/getAllPosts")
     public Iterable<Blog> getAllPosts(){
         return blogRepository.findAll();
+    }
+
+    @PutMapping("/updatePost")
+    public String updatePost(@RequestBody Blog blog){
+       /* blog.equals(blog);
+        if (blogRepository.existsById(blog.getId())){
+            blogRepository.save(blog);
+           return "Post updated";
+        }
+        else{
+            return "Post not Upadted!";
+        }*/
+
+        blogRepository.save(blog);
+
+        return "Post updated";
+    }
+
+    @DeleteMapping("/deletePost/{id}")
+    public String deletePost(@PathVariable int id){
+        blogRepository.deleteById(id);
+        return "Post deleted";
     }
 }

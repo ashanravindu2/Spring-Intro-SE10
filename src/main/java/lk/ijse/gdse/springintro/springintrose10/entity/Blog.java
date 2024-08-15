@@ -17,7 +17,5 @@ public class Blog {
     private String title = "Spring Boot";
     private String body = "Spring Boot is a powerful framework for building web applications.";
 
-
-
 }
 
